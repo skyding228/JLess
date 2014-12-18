@@ -7,9 +7,10 @@ import java.util.List;
  * @author wid
  *
  */
+@SuppressWarnings("rawtypes")
 public class JLessMethod {
-	private int modify;
-	private List<Class<?>> paramTypes;
+	private int modify;	
+	private List<Class> paramTypes;
 	private List<String> paramNames ; 
 	
 	private String classPath; //所属类的完整路径
@@ -19,7 +20,7 @@ public class JLessMethod {
 		
 	}
 
-	public JLessMethod(int modify, List<Class<?>> paramTypes,
+	public JLessMethod(int modify, List<Class> paramTypes,
 			List<String> paramNames,String classPath,String methodName) {
 		super();
 		this.modify = modify;
@@ -36,10 +37,10 @@ public class JLessMethod {
 	public void setModify(int modify) {
 		this.modify = modify;
 	}
-	public List<Class<?>> getParamTypes() {
+	public List<Class> getParamTypes() {
 		return paramTypes;
 	}
-	public void setParamTypes(List<Class<?>> paramTypes) {
+	public void setParamTypes(List<Class> paramTypes) {
 		this.paramTypes = paramTypes;
 	}
 	public List<String> getParamNames() {

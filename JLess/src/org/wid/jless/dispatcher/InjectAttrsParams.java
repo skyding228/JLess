@@ -30,10 +30,27 @@ class InjectAttrsParams {
 			if (param == null) {
 				paramList.add(null);
 			}else {
-				paramList.add(param[0]);
+				paramList.add(convert(method.getParamTypes().get(i),param));
 			}
 		}
 		
 		return paramList;
+	}
+	/**
+	 * 将参数数组转换为对应的类型
+	 * @param clazz
+	 * @param value
+	 * @return
+	 * add at Dec 17, 2014
+	 */
+	@SuppressWarnings("rawtypes")
+	public static Object convert(Class clazz,String[] value){
+		if (clazz.getName().equals("int")) {
+			return Integer.valueOf(value[0]);
+		}
+		if (clazz.getName().equals("long")) {
+			return Long.valueOf(value[0]);
+		}
+		return value[0];
 	}
 }

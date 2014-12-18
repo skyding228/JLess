@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
-import org.wid.jless.json.JLessJson;
 import org.wid.jless.log.JLessLog;
 
 /**
@@ -24,8 +23,9 @@ class ResponseHeader {
 	 * add at Dec 16, 2014
 	 */
 	public static void setResposeHeader(HttpServletRequest request,HttpServletResponse response){
-		log.debug("设置响应类型:"+Constant.CONTENT_TYPE);
-		response.setContentType(Constant.CONTENT_TYPE);
+		
+		response.setContentType(request.getContentType());
+		log.debug("设置响应类型:"+response.getContentType());
 		
 		String charset = request.getCharacterEncoding();
 		response.setCharacterEncoding(charset == null ? Constant.DEFAULT_CHARSET : charset);

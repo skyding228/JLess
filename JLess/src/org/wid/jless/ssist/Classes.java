@@ -47,6 +47,9 @@ public class Classes {
      */
     @SuppressWarnings("rawtypes")
 	public static Class loadClass(String classPath){
+    	if ("int".equals(classPath)) {
+			return int.class;
+		}
     	try {
 			return Class.forName(classPath);
 		} catch (ClassNotFoundException e) {
@@ -79,14 +82,15 @@ public class Classes {
      * @return
      * @throws Exception 
      */
-    private static JLessMethod getMethodParams(CtMethod cm) throws Exception{
+    @SuppressWarnings("rawtypes")
+	private static JLessMethod getMethodParams(CtMethod cm) throws Exception{
         MethodInfo methodInfo = cm.getMethodInfo();
         CodeAttribute codeAttribute = methodInfo.getCodeAttribute();
         LocalVariableAttribute attr = (LocalVariableAttribute) codeAttribute
                 .getAttribute(LocalVariableAttribute.tag);
 
         List<String> paramNames = new ArrayList<String>();
-        List<Class<?>> paramTypes = new ArrayList<Class<?>>();
+        List<Class> paramTypes = new ArrayList<Class>();
         CtClass[] typeCtClass = cm.getParameterTypes();       
         int count =  typeCtClass.length;
         int pos = Modifier.isStatic(cm.getModifiers()) ? 0 : 1;
