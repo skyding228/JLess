@@ -24,6 +24,11 @@ class ResponseHeader {
 	 * add at Dec 16, 2014
 	 */
 	public static void setResposeHeader(HttpServletRequest request,HttpServletResponse response){
-		log.debug("请求信息:"+JLessJson.stringify(request));
+		log.debug("设置响应类型:"+Constant.CONTENT_TYPE);
+		response.setContentType(Constant.CONTENT_TYPE);
+		
+		String charset = request.getCharacterEncoding();
+		response.setCharacterEncoding(charset == null ? Constant.DEFAULT_CHARSET : charset);
+		log.debug("设置响应编码:"+response.getCharacterEncoding());
 	}
 }

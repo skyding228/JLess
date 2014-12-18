@@ -36,10 +36,11 @@ public class JLessFilter implements Filter{
 		
 		HttpServletRequest request = (HttpServletRequest) arg0;
 		HttpServletResponse response = (HttpServletResponse) arg1;
-		PrintWriter writer = response.getWriter();
 		
 		log.debug("设置响应头信息!");
 		ResponseHeader.setResposeHeader(request, response);
+		
+		PrintWriter writer = response.getWriter();
 		
 		String url = request.getRequestURI();
 		log.debug("拦截到的URI:"+url);
