@@ -2,6 +2,8 @@
 package org.wid.jless.ssist;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -150,7 +152,8 @@ public class Classes {
     	if (lists == null) {
 			return lists;
 		}
-    	lists.sort(new Comparator<JLessMethod>() {
+    	//排序
+    	Collections.sort(lists, new Comparator<JLessMethod>() {
 			@Override
 			public int compare(JLessMethod o1, JLessMethod o2) {
 				return o2.getParamNames().size() - o1.getParamNames().size();
